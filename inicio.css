@@ -1,0 +1,201 @@
+/* ==========================================================================
+   AutoFix — Estilos Específicos para la Ventana de Inicio (Hero + Rayo McQueen)
+   ========================================================================== */
+
+/* 0. Fondo Oscuro Continuo para la Portada */
+main.main-hero-only,
+.inicio-page main {
+    background-color: #09090b !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1. Hero Section Fullscreen Nivelada */
+.hero-section {
+    position: relative;
+    background: linear-gradient(135deg, #09090b 0%, #18181b 100%);
+    color: var(--text-white);
+    padding: 2rem 0;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 85% 20%, rgba(225, 29, 72, 0.25) 0%, transparent 50%),
+                      radial-gradient(circle at 15% 85%, rgba(220, 38, 38, 0.18) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 2.7rem;
+    letter-spacing: -0.02em;
+    color: var(--text-white);
+    margin-bottom: 0.8rem;
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 1.8rem;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.2rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.icon-red { background: rgba(225, 29, 72, 0.2); color: #f43f5e; }
+.icon-orange { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+
+.stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* 2. Glassmorphism Card (Rayo McQueen) */
+.hero-card-preview {
+    perspective: 1000px;
+}
+
+.preview-glass {
+    background: rgba(24, 24, 27, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(225, 29, 72, 0.4);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    text-align: center;
+}
+
+.preview-header {
+    background: #09090b;
+    padding: 0.75rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dots {
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.dot.red { background: #e11d48; }
+.dot.yellow { background: #f59e0b; }
+.dot.green { background: #10b981; }
+
+.preview-title {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.preview-body {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    background: radial-gradient(circle at center, rgba(225, 29, 72, 0.15) 0%, transparent 70%);
+}
+
+.mcqueen-img-container {
+    background: #ffffff;
+    padding: 0.8rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.mcqueen-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.mcqueen-img:hover {
+    transform: scale(1.04);
+}
+
+.mcqueen-tag {
+    background: #09090b;
+    color: var(--text-white);
+    padding: 0.45rem 1.2rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    border: 1px solid rgba(225, 29, 72, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+    }
+    .hero-card-preview {
+        display: none;
+    }
+}

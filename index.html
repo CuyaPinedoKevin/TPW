@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix — Inicio</title>
+
+    <meta name="description" content="AutoFix es el sistema web integral para la gestión de clientes, vehículos, servicios y órdenes de trabajo de talleres mecánicos.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="inicio.css">
+</head>
+<body class="inicio-page">
+
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="AutoFix Logo" class="logo-img">
+                <span class="logo-text">Auto<span class="logo-highlight">Fix</span></span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="registrar.html" class="nav-link"><i class="fa-solid fa-car"></i> Registrar Vehículo</a>
+                <a href="tabla.html" class="nav-link"><i class="fa-solid fa-table-list"></i> Vehículos Registrados</a>
+                <a href="nosotros.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> Taller</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="registrar.html" class="btn btn-primary btn-nav">
+                    <i class="fa-solid fa-plus"></i> Nuevo Ingreso
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-hero-only">
+
+        <section class="hero-section">
+            <div class="hero-bg-overlay"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Sistema de Gestión para Taller Mecánico</h1>
+                    <p class="hero-description">
+                        Bienvenido a <strong>AutoFix</strong>. Administra la recepción de vehículos, consulta la lista de atenciones en tiempo real y optimiza la atención de tu taller en pantallas organizadas.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="registrar.html" class="btn btn-primary btn-lg">
+                            <i class="fa-solid fa-car-side"></i> Registrar Vehículo
+                        </a>
+                        <a href="tabla.html" class="btn btn-outline btn-lg">
+                            <i class="fa-solid fa-list-check"></i> Ver Lista de Ingresos
+                        </a>
+                    </div>
+
+
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon icon-red"><i class="fa-solid fa-car"></i></div>
+                            <div>
+                                <span class="stat-number" id="statTotalVehiculos">3</span>
+                                <span class="stat-label">Vehículos Registrados</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon icon-orange"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <div>
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Atención Rápida</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-card-preview">
+                    <div class="preview-glass">
+                        <div class="preview-header">
+                            <div class="dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="preview-title"><i class="fa-solid fa-wrench"></i> AutoFix Panel de los Famosos</span>
+                        </div>
+                        <div class="preview-body">
+                            <div class="mcqueen-img-container">
+                                <img src="mcqueen.png" alt="Rayo McQueen — AutoFix Taller Mecánico" class="mcqueen-img">
+                            </div>
+                            <div class="mcqueen-tag">
+                                <i class="fa-solid fa-bolt text-primary"></i> <strong>Rayo McQueen </strong> — Cliente VIP de AutoFix
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="logo.jpg" alt="AutoFix Logo" class="logo-img">
+                    <span class="logo-text">Auto<span class="logo-highlight">Fix</span></span>
+                </div>
+                <p>Sistema de Gestión de Taller Mecánico.</p>
+            </div>
+            <div class="footer-links">
+                <p>Cuya Pinedo Kevin Anthony © U24266577</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="global.js"></script>
+    <script src="inicio.js"></script>
+</body>
+</html>

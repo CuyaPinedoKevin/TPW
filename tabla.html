@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix — Vehículos Registrados</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tabla.css">
+</head>
+<body>
+
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="AutoFix Logo" class="logo-img">
+                <span class="logo-text">Auto<span class="logo-highlight">Fix</span></span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="registrar.html" class="nav-link"><i class="fa-solid fa-car"></i> Registrar Vehículo</a>
+                <a href="tabla.html" class="nav-link active"><i class="fa-solid fa-table-list"></i> Vehículos Registrados</a>
+                <a href="nosotros.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> Taller</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="registrar.html" class="btn btn-primary btn-nav">
+                    <i class="fa-solid fa-plus"></i> Nuevo Ingreso
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="page-header-banner">
+            <div class="container">
+                <h1><i class="fa-solid fa-table-list text-primary"></i> Ventana: Tabla de Vehículos Registrados</h1>
+                <p>Visualización interactiva en tiempo real con opciones de búsqueda, edición y eliminación.</p>
+            </div>
+        </div>
+
+
+        <section class="table-section">
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-header-flex">
+                        <div>
+                            <h2>Lista General de Atenciones</h2>
+                            <p>Vehículos registrados en el sistema del taller mecánico</p>
+                        </div>
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="searchInput" placeholder="Buscar por placa, marca o cliente...">
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table" id="vehiclesTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Placa</th>
+                                    <th>Marca / Modelo</th>
+                                    <th>Propietario / Teléfono</th>
+                                    <th>Servicio Solicitar</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <!-- Los registros se cargan dinámicamente mediante JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <span id="counterInfo">Mostrando 3 vehículo(s) registrados.</span>
+                        <button id="btnResetData" class="btn btn-sm btn-outline">
+                            <i class="fa-solid fa-rotate-left"></i> Restaurar Datos de Ejemplo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="logo.jpg" alt="AutoFix Logo" class="logo-img">
+                    <span class="logo-text">Auto<span class="logo-highlight">Fix</span></span>
+                </div>
+                <p>Sistema de Gestión de Taller Mecánico.</p>
+            </div>
+            <div class="footer-links">
+                <p>Cuya Pinedo Kevin Anthony © U24266577</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+    <script src="tabla.js"></script>
+</body>
+</html>

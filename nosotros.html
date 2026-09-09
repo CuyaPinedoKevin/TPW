@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix — Sobre el Taller</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nosotros.css">
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="AutoFix Logo" class="logo-img">
+                <span class="logo-text">Auto<span class="logo-highlight">Fix</span></span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="registrar.html" class="nav-link"><i class="fa-solid fa-car"></i> Registrar Vehículo</a>
+                <a href="tabla.html" class="nav-link"><i class="fa-solid fa-table-list"></i> Vehículos Registrados</a>
+                <a href="nosotros.html" class="nav-link active"><i class="fa-solid fa-circle-info"></i> Taller</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="registrar.html" class="btn btn-primary btn-nav">
+                    <i class="fa-solid fa-plus"></i> Nuevo Ingreso
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header Banner -->
+        <div class="page-header-banner">
+            <div class="container">
+                <h1><i class="fa-solid fa-circle-info text-primary"></i> Ventana: Información del Taller</h1>
+                <p>Conozca la propuesta de valor y las características del sistema web AutoFix.</p>
+            </div>
+        </div>
+
+        <!-- Section: Presentación del Taller Nivelada -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">AutoFix Taller Mecánico</span>
+                    <h2 class="section-title">El Sistema que Moderniza la Operación de tu Taller</h2>
+                    <p class="section-desc">Diseñado para resolver el caos de la información en papel, ofreciendo registro rápido y seguimiento claro.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-clipboard-user"></i></div>
+                        <h3>Recepción Organizada</h3>
+                        <p>Captura rápida de los datos del cliente, vehículo y servicio solicitado al momento de ingresar al taller.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-rectangle-list"></i></div>
+                        <h3>Control en Tabla Central</h3>
+                        <p>Visualiza en tiempo real todos los vehículos presentes en el taller con opciones para editar o eliminar registros.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Escalabilidad Asegurada</h3>
+                        <p>Preparado para evolucionar hacia control de mecánicos, repuestos, órdenes de trabajo y reportes financieros.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="logo.jpg" alt="AutoFix Logo" class="logo-img">
+                    <span class="logo-text">Auto<span class="logo-highlight">Fix</span></span>
+                </div>
+                <p>Sistema de Gestión de Taller Mecánico.</p>
+            </div>
+            <div class="footer-links">
+                <p>Cuya Pinedo Kevin Anthony © U24266577</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS scripts -->
+    <script src="global.js"></script>
+    <script src="nosotros.js"></script>
+</body>
+</html>

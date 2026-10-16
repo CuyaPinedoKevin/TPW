@@ -1,8 +1,11 @@
-/* ==========================================================================
-   AutoFix — Estilos Específicos para la Ventana de Inicio (Hero + Rayo McQueen)
-   ========================================================================== */
 
-/* 0. Fondo Oscuro Continuo para la Portada */
+/* ========================================================
+   ESTILOS DE LA PÁGINA DE INICIO (inicio.css)
+   ADAPTADO A MOBILE-FIRST (SEMANA 8)
+   ANIMACIÓN CON @keyframes (SEMANA 7)
+   GRÁFICO SVG PERSONALIZADO (SEMANA 6)
+   ======================================================== */
+
 main.main-hero-only,
 .inicio-page main {
     background-color: #09090b !important;
@@ -11,12 +14,14 @@ main.main-hero-only,
     flex-direction: column;
 }
 
-/* 1. Hero Section Fullscreen Nivelada */
+/* ========================================================
+   1. HERO SECTION — ESTILOS BASE (MÓVIL PRIMERO)
+   ======================================================== */
 .hero-section {
     position: relative;
     background: linear-gradient(135deg, #09090b 0%, #18181b 100%);
     color: var(--text-white);
-    padding: 2rem 0;
+    padding: 2rem 0 3rem;
     overflow: hidden;
     flex: 1;
     display: flex;
@@ -34,28 +39,124 @@ main.main-hero-only,
     pointer-events: none;
 }
 
+/* Móvil primero: 1 columna por defecto */
 .hero-container {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     align-items: center;
     position: relative;
     z-index: 2;
     width: 100%;
 }
 
+/* ========================================================
+   2. SEMANA 6: GRÁFICO SVG PERSONALIZADO CON CSS
+   ======================================================== */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.45rem 1.1rem;
+    background: rgba(225, 29, 72, 0.12);
+    border: 1px solid rgba(225, 29, 72, 0.4);
+    border-radius: var(--radius-full);
+    margin-bottom: 1.2rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fda4af;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(8px);
+    transition: var(--transition);
+    cursor: pointer;
+    width: fit-content;
+}
+
+.hero-badge:hover {
+    background: rgba(225, 29, 72, 0.25);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Propiedades SVG manipuladas desde CSS */
+.taller-svg-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.taller-svg-icon .svg-wrench-path {
+    fill: rgba(225, 29, 72, 0.25);
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.taller-svg-icon .svg-wrench-accent {
+    fill: #f43f5e;
+    stroke: #ffffff;
+    stroke-width: 1.2;
+    transition: fill 0.3s ease, transform 0.3s ease;
+}
+
+/* Interacción hover sobre el SVG */
+.hero-badge:hover .taller-svg-icon {
+    transform: rotate(-15deg) scale(1.15);
+    filter: drop-shadow(0 0 6px rgba(225, 29, 72, 0.8));
+}
+
+.hero-badge:hover .taller-svg-icon .svg-wrench-path {
+    fill: var(--primary-color);
+    stroke: #ffffff;
+    stroke-width: 2.2;
+}
+
+.hero-badge:hover .taller-svg-icon .svg-wrench-accent {
+    fill: #fbbf24;
+}
+
+/* ========================================================
+   3. SEMANA 7: ANIMACIÓN CON @keyframes
+   Entrada suave combinando opacidad y desplazamiento
+   ======================================================== */
+@keyframes heroEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicación de la animación con retardos escalonados */
+.hero-badge {
+    opacity: 0;
+    animation: heroEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .hero-title {
-    font-size: 2.7rem;
+    font-size: 2.1rem;
     letter-spacing: -0.02em;
     color: var(--text-white);
     margin-bottom: 0.8rem;
+    line-height: 1.2;
+    opacity: 0;
+    animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
 .hero-description {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text-muted);
     margin-bottom: 1.8rem;
     max-width: 600px;
+    opacity: 0;
+    animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
 .hero-buttons {
@@ -63,13 +164,19 @@ main.main-hero-only,
     gap: 1rem;
     flex-wrap: wrap;
     margin-bottom: 2.2rem;
+    opacity: 0;
+    animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
+/* Móvil primero: Estadísticas apiladas verticalmente */
 .hero-stats {
     display: flex;
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 1.5rem;
+    opacity: 0;
+    animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
 .stat-card {
@@ -104,9 +211,15 @@ main.main-hero-only,
     color: var(--text-muted);
 }
 
-/* 2. Glassmorphism Card (Rayo McQueen) */
+/* Móvil primero: tarjeta previa visible en móvil y tablet con imagen responsiva */
 .hero-card-preview {
+    display: block;
     perspective: 1000px;
+    width: 100%;
+    max-width: 420px;
+    margin: 1.5rem auto 0;
+    opacity: 0;
+    animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
 }
 
 .preview-glass {
@@ -168,6 +281,11 @@ main.main-hero-only,
     max-width: 100%;
 }
 
+.mcqueen-picture {
+    display: block;
+    max-width: 100%;
+}
+
 .mcqueen-img {
     max-width: 100%;
     height: auto;
@@ -190,12 +308,45 @@ main.main-hero-only,
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-    .hero-container {
-        grid-template-columns: 1fr;
+/* ========================================================
+   4. SEMANA 8: ADAPTACIÓN PROGRESSIVA (MOBILE-FIRST)
+   Ampliación con @media (min-width: ...)
+   ======================================================== */
+
+/* Pantallas medianas (Tablets: min-width: 768px) */
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 2.4rem;
     }
+
+    .hero-description {
+        font-size: 1.05rem;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
     .hero-card-preview {
-        display: none;
+        max-width: 480px;
+        margin: 2rem auto 0;
+    }
+}
+
+/* Pantallas grandes (Escritorio: min-width: 992px) */
+@media (min-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 3rem;
+    }
+
+    .hero-title {
+        font-size: 2.7rem;
+    }
+
+    .hero-card-preview {
+        margin: 0;
+        max-width: 100%;
     }
 }

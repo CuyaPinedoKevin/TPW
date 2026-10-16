@@ -50,6 +50,15 @@
             <div class="hero-bg-overlay"></div>
             <div class="container hero-container">
                 <div class="hero-content">
+                    <!-- SEMANA 6: Gráfico SVG temático personalizable mediante CSS -->
+                    <div class="hero-badge" title="AutoFix — Excelencia y Calidad en Servicio Mecánico">
+                        <svg class="taller-svg-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="svg-wrench-path" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            <circle class="svg-wrench-accent" cx="6.5" cy="17.5" r="1.5"/>
+                        </svg>
+                        <span>Taller Mecánico Especializado • AutoFix Pro</span>
+                    </div>
+
                     <h1 class="hero-title">Sistema de Gestión para Taller Mecánico</h1>
                     <p class="hero-description">
                         Bienvenido a <strong>AutoFix</strong>. Administra la recepción de vehículos, consulta la lista de atenciones en tiempo real y optimiza la atención de tu taller en pantallas organizadas.
@@ -93,8 +102,18 @@
                             <span class="preview-title"><i class="fa-solid fa-wrench"></i> AutoFix Panel de los Famosos</span>
                         </div>
                         <div class="preview-body">
+                            <!-- SEMANA 8: Imágenes responsivas con <picture> y srcset adaptadas al dispositivo -->
                             <div class="mcqueen-img-container">
-                                <img src="mcqueen.png" alt="Rayo McQueen — AutoFix Taller Mecánico" class="mcqueen-img">
+                                <picture class="mcqueen-picture">
+                                    <source media="(min-width: 992px)" srcset="mcqueen.png">
+                                    <source media="(min-width: 576px)" srcset="mcqueen-md.png">
+                                    <img src="mcqueen-sm.png" 
+                                         srcset="mcqueen-sm.png 480w, mcqueen-md.png 768w, mcqueen.png 1024w"
+                                         sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 420px"
+                                         alt="Rayo McQueen — AutoFix Taller Mecánico" 
+                                         class="mcqueen-img"
+                                         loading="lazy">
+                                </picture>
                             </div>
                             <div class="mcqueen-tag">
                                 <i class="fa-solid fa-bolt text-primary"></i> <strong>Rayo McQueen </strong> — Cliente VIP de AutoFix

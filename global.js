@@ -39,11 +39,36 @@ function obtenerVehiculos() {
         localStorage.setItem("autofix_vehiculos", JSON.stringify(vehiculosIniciales));
         return [...vehiculosIniciales];
     }
-    const lista = JSON.parse(datos);
+    let lista = JSON.parse(datos);
     if (!Array.isArray(lista) || lista.length === 0) {
         localStorage.setItem("autofix_vehiculos", JSON.stringify(vehiculosIniciales));
         return [...vehiculosIniciales];
     }
+
+    // Asegurar unicidad estricta de IDs para evitar colisiones
+    const idsVistos = new Set();
+    let huboDuplicados = false;
+    let maxIdNum = 0;
+
+    lista.forEach(v => {
+        const num = parseInt(v.id, 10);
+        if (!isNaN(num) && num > maxIdNum) maxIdNum = num;
+    });
+
+    lista.forEach(v => {
+        if (!v.id || idsVistos.has(String(v.id))) {
+            maxIdNum++;
+            v.id = String(maxIdNum).padStart(3, "0");
+            huboDuplicados = true;
+        } else {
+            idsVistos.add(String(v.id));
+        }
+    });
+
+    if (huboDuplicados) {
+        guardarVehiculos(lista);
+    }
+
     return lista;
 }
 
@@ -54,7 +79,8 @@ function guardarVehiculos(lista) {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Menú desplegable para móviles
+
+    
     const menuToggle = document.getElementById("menuToggle");
     const navMenu = document.getElementById("navMenu");
     
@@ -70,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
         link.addEventListener("click", function() {
             if (!this.classList.contains("btn-edit")) {
                 localStorage.removeItem("autofix_edit_index");
+                localStorage.removeItem("autofix_edit_id");
             }
         });
     });

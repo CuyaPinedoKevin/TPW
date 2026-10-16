@@ -62,7 +62,7 @@
                         </div>
                     </div>
 
-                    <form id="vehicleForm" class="vehicle-form" novalidate>
+                    <form id="vehicleForm" class="vehicle-form">
                         <div class="form-grid">
                             <!-- Campo: Placa -->
                             <div class="form-group">
@@ -104,7 +104,7 @@
 
                             <div class="form-group">
                                 <label for="telefono"><i class="fa-solid fa-phone"></i> Teléfono de Contacto <span class="required">*</span></label>
-                                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 987654321" required>
+                                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 987654321" maxlength="9" pattern="[0-9]{9}" title="Ingrese exactamente 9 dígitos numéricos" required>
                             </div>
 
 

@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (confirm("¿Restaurar los datos de ejemplo iniciales?")) {
                 localStorage.setItem("autofix_vehiculos", JSON.stringify(vehiculosIniciales));
                 localStorage.removeItem("autofix_edit_index");
+                localStorage.removeItem("autofix_edit_id");
                 vehiculos = [...vehiculosIniciales];
                 mostrarVehiculosEnTabla();
             }
@@ -56,10 +57,10 @@ function mostrarVehiculosEnTabla(lista = vehiculos) {
                 <td><span class="badge badge-service"><i class="fa-solid fa-wrench"></i> ${v.servicio}</span></td>
                 <td>
                     <div class="actions-cell">
-                        <button class="btn btn-sm btn-edit" onclick="prepararEdicion(${i})">
+                        <button class="btn btn-sm btn-edit" onclick="prepararEdicion('${v.id}')">
                             <i class="fa-solid fa-pen-to-square"></i> Editar
                         </button>
-                        <button class="btn btn-sm btn-delete" onclick="eliminarVehiculo(${i})">
+                        <button class="btn btn-sm btn-delete" onclick="eliminarVehiculo('${v.id}')">
                             <i class="fa-solid fa-trash-can"></i> Eliminar
                         </button>
                     </div>
@@ -76,17 +77,34 @@ function mostrarVehiculosEnTabla(lista = vehiculos) {
 }
 
 
-function prepararEdicion(posicion) {
-    localStorage.setItem("autofix_edit_index", posicion);
+function prepararEdicion(id) {
+    localStorage.setItem("autofix_edit_id", id);
     window.location.href = "registrar.html";
 }
 
 
-function eliminarVehiculo(posicion) {
-    const v = vehiculos[posicion];
+function eliminarVehiculo(id) {
+    const indexReal = vehiculos.findIndex(v => String(v.id) === String(id));
+    if (indexReal === -1) return;
+
+    const v = vehiculos[indexReal];
     if (confirm("¿Está seguro de eliminar el vehículo con placa " + v.placa + "?")) {
-        vehiculos.splice(posicion, 1);
+        vehiculos.splice(indexReal, 1);
         guardarVehiculos(vehiculos);
-        mostrarVehiculosEnTabla();
+
+        // Mantener el filtro de búsqueda si el usuario tiene texto ingresado
+        const searchInput = document.getElementById("searchInput");
+        const texto = searchInput ? searchInput.value.toLowerCase().trim() : "";
+        if (texto) {
+            const filtrados = vehiculos.filter(function(item) {
+                return item.placa.toLowerCase().includes(texto) ||
+                       item.marca.toLowerCase().includes(texto) ||
+                       item.propietario.toLowerCase().includes(texto);
+            });
+            mostrarVehiculosEnTabla(filtrados);
+        } else {
+            mostrarVehiculosEnTabla(vehiculos);
+        }
     }
 }
+

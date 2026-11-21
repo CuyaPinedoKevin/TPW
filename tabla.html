@@ -111,6 +111,24 @@
         </div>
     </footer>
 
+    <!-- Ventana Flotante Modal de Confirmación (Semana 14) -->
+    <div id="modalConfirmacion" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-header">
+                <i class="fa-solid fa-triangle-exclamation modal-icon"></i>
+                <h3>Confirmar Eliminación</h3>
+            </div>
+            <p id="modalMensaje">¿Está seguro de eliminar el vehículo del sistema?</p>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="btnModalCancelar">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="btnModalConfirmar">
+                    <i class="fa-solid fa-trash-can"></i> Confirmar Eliminación
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="global.js"></script>
     <script src="tabla.js"></script>
 </body>

@@ -83,28 +83,92 @@ function prepararEdicion(id) {
 }
 
 
+// =========================================================
+// CONTROL DE LA VENTANA FLOTANTE / MODAL (SEMANA 14)
+// =========================================================
+let vehiculoAEliminarId = null;
+
 function eliminarVehiculo(id) {
     const indexReal = vehiculos.findIndex(v => String(v.id) === String(id));
     if (indexReal === -1) return;
 
     const v = vehiculos[indexReal];
-    if (confirm("¿Está seguro de eliminar el vehículo con placa " + v.placa + "?")) {
-        vehiculos.splice(indexReal, 1);
-        guardarVehiculos(vehiculos);
+    vehiculoAEliminarId = id;
 
-        // Mantener el filtro de búsqueda si el usuario tiene texto ingresado
-        const searchInput = document.getElementById("searchInput");
-        const texto = searchInput ? searchInput.value.toLowerCase().trim() : "";
-        if (texto) {
-            const filtrados = vehiculos.filter(function(item) {
-                return item.placa.toLowerCase().includes(texto) ||
-                       item.marca.toLowerCase().includes(texto) ||
-                       item.propietario.toLowerCase().includes(texto);
-            });
-            mostrarVehiculosEnTabla(filtrados);
-        } else {
-            mostrarVehiculosEnTabla(vehiculos);
+    const modal = document.getElementById("modalConfirmacion");
+    const modalMensaje = document.getElementById("modalMensaje");
+
+    if (modal && modalMensaje) {
+        modalMensaje.innerHTML = `¿Está seguro de eliminar el registro del vehículo con placa <strong>${v.placa}</strong> (${v.marca} ${v.modelo}) perteneciente a <strong>${v.propietario}</strong>?`;
+        modal.classList.add("show");
+    } else {
+        // Respaldo de seguridad en caso no exista el nodo del modal
+        if (confirm("¿Está seguro de eliminar el vehículo con placa " + v.placa + "?")) {
+            procederEliminacion(id);
         }
     }
 }
+
+function procederEliminacion(id) {
+    const indexReal = vehiculos.findIndex(v => String(v.id) === String(id));
+    if (indexReal === -1) return;
+
+    vehiculos.splice(indexReal, 1);
+    guardarVehiculos(vehiculos);
+
+    // Mantener el filtro de búsqueda si el usuario tiene texto ingresado
+    const searchInput = document.getElementById("searchInput");
+    const texto = searchInput ? searchInput.value.toLowerCase().trim() : "";
+    if (texto) {
+        const filtrados = vehiculos.filter(function(item) {
+            return item.placa.toLowerCase().includes(texto) ||
+                   item.marca.toLowerCase().includes(texto) ||
+                   item.propietario.toLowerCase().includes(texto);
+        });
+        mostrarVehiculosEnTabla(filtrados);
+    } else {
+        mostrarVehiculosEnTabla(vehiculos);
+    }
+}
+
+function cerrarModal() {
+    const modal = document.getElementById("modalConfirmacion");
+    if (modal) {
+        modal.classList.remove("show");
+    }
+    vehiculoAEliminarId = null;
+}
+
+// Configuración de escuchadores de eventos para el modal
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("modalConfirmacion");
+    const modalClose = document.getElementById("modalClose");
+    const btnModalCancelar = document.getElementById("btnModalCancelar");
+    const btnModalConfirmar = document.getElementById("btnModalConfirmar");
+
+    if (modalClose) {
+        modalClose.addEventListener("click", cerrarModal);
+    }
+
+    if (btnModalCancelar) {
+        btnModalCancelar.addEventListener("click", cerrarModal);
+    }
+
+    if (btnModalConfirmar) {
+        btnModalConfirmar.addEventListener("click", function() {
+            if (vehiculoAEliminarId !== null) {
+                procederEliminacion(vehiculoAEliminarId);
+                cerrarModal();
+            }
+        });
+    }
+
+    // Cerrar al hacer clic fuera del cuadro blanco (en el fondo oscuro)
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            cerrarModal();
+        }
+    });
+});
+
 
